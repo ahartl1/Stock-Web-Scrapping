@@ -37,20 +37,25 @@ After being provided with your user-agent and the string of stock tickets, the p
 # Example
 ## Deriving User Agent
 User-agent obtained through entering "my the user agent" into the search engine (in this example, google chrome)
+
 ![image](https://github.com/user-attachments/assets/05a0e203-c3b3-42da-aa62-d2ee7794dcd9)
 
 ## Python
 Upon running the code, it will ask for the user agent, which you can respond by typing into the box and pressing enter
+
 ![image](https://github.com/user-attachments/assets/0042ade8-eab8-4560-8499-274a55f27e78)
 
 Then it will request a series of stock tickers, separated by a space. In the below example, Tesla (TSLA), Amazon (AMZN), Apple (AAPL), META (META), Netflix (NFLX), and Google (GOOG) are provided.
+
 ![image](https://github.com/user-attachments/assets/2be156c9-cd12-4a9a-a125-4c9cee4f8601)
 
 ## Output
 The program will provided real-time updates about the derivation of each companies stocks, then informing you of the program's completion through printing "Done!" as seen below.
+
 ![image](https://github.com/user-attachments/assets/39afcc64-2900-4445-9634-c640503ac2ac)
 
 Items will be output in csv, xlsx, and JSON format in the folder the python code is run in.
+
 ![image](https://github.com/user-attachments/assets/98831219-bf8a-4b16-998a-31b866abf74c)
 
 # Attributions
