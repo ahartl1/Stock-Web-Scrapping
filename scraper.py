@@ -1,11 +1,3 @@
-import json
-import csv
-import sys
-from typing import Any, Dict
-import requests
-from bs4 import BeautifulSoup
-import pandas as pd
-
 def scrape_stock(ticker_symbol: Any) -> Dict[str, Any]:
     print('Getting stock data of', ticker_symbol)
     headers = {
@@ -45,26 +37,23 @@ def scrape_stock(ticker_symbol: Any) -> Dict[str, Any]:
         'earnings_date': soup.find('span', {'title': 'Earnings Date'}).find_next_sibling('span').text.strip(),
         'dividend_yield': soup.find('span', {'title': 'Forward Dividend & Yield'}).find_next_sibling('span').text.strip(),
         'ex_dividend_date': soup.find('span', {'title': 'Ex-Dividend Date'}).find_next_sibling('span').text.strip(),
-        'year_target_est': soup.find('span', {'title': '1y Target Est'}).find_next_sibling('span').text.strip()
-        }
+        'year_target_est': soup.find('span', {'title': '1y Target Est'}).find_next_sibling('span').text.strip()}
     return stock
 
 useragent = input("Enter user agent:")
-ticker_symbols = input("Enter ticker symbols seperated by a space (e.g. \"TSLA AMZN AAPL\"").split()
+ticker_symbols = input("Enter ticker symbols seperated by a space (e.g. \"TSLA AMZN AAPL\"):").split()
 stockdata = [scrape_stock(symbol) for symbol in ticker_symbols]
 
 with open('stock_holder_data.json', 'w', encoding='utf-8') as f:
     json.dump(stockdata, f)
 
-CSV_FILE_PATH = 'stock_holder_data.csv'
-with open(CSV_FILE_PATH, 'w', newline='', encoding='utf-8') as csvfile:
+with open('stock_holder_data.csv', 'w', newline='', encoding='utf-8') as csvfile:
     fieldnames = stockdata[0].keys()
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames, extrasaction='ignore')
     writer.writeheader()
     writer.writerows(stockdata)
 
-EXCEL_FILE_PATH = 'stock_holder_data.xlsx'
 df = pd.DataFrame(stockdata)
-df.to_excel(EXCEL_FILE_PATH, index=False)
+df.to_excel('stock_holder_data.xlsx', index=False)
 
 print('Done!')
