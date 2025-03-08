@@ -1,5 +1,6 @@
 # Stock-Web-Scrapping
 Initial Upload: 2/27/2025
+
 Last Updated: 3/8/2025
 
 Data 580D -- Analytics for Enterprise Apps
